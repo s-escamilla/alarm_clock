@@ -5,12 +5,14 @@ import random
 
 friend_ls = []
 friend_dict = {}
-
+note = "Overslept"
 f = open('data.json')
   
 data = json.load(f)
 
 user_id = data["User"]["id"]
+# access_token = Client.get_access_token(username=data["User"]['user_name'],
+#                                        password=data["User"]["password"])
 access_token = data["Venmo_auth_token"]["token"]
 client = Client(access_token=access_token)
 
@@ -38,5 +40,5 @@ for payment_method in payment_methods:
 
 rand_friend_id = friend_dict[friend_ls[random.randint(0,len(friend_ls)-1)]]
 
-# client.payment.send_money(amount = float(1.00), note='Didn't wake up in time',target_user_id=int(rand_friend_id),funding_source_id=funding_source_id)
+# client.payment.send_money(amount = float(1.00), note=note,target_user_id=int(rand_friend_id),funding_source_id=funding_source_id)
 # client.log_out(access_token=access_token)
